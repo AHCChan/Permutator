@@ -61,17 +61,22 @@ def Simple_Permutate(collection):
     
     # Setup
     unique = set([])
+    tested = set([])
     result = []
     
     # Loop (main recursion body)
     for i in range_:
-        copy = list(all_values)
-        value = copy.pop(i)
-        sub_permutations = Simple_Permutate(copy)
-        for j in range_:
+        value = all_values[i]
+        
+        if value not in tested:
+            tested.add(value)
+            
+            copy = list(all_values)
+            value = copy.pop(i)
+            sub_permutations = Simple_Permutate(copy)
+            
             for sub in sub_permutations:
-                temp = list(sub)
-                temp.insert(j, value)
+                temp = [value] + sub
                 tup = tuple(temp)
                 if tup not in unique:
                     unique.add(tup)
