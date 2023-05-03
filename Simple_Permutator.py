@@ -85,4 +85,28 @@ def Simple_Permutate(collection):
     # Return
     return result
 
+def Get_All_Pairs(collection):
+    """
+    Get all the possible unique pairs in a collection of values.
+    
+    @collection
+            (list/tuple<x>)
+            The collection of values to be paired.
+    
+    Get_All_Pairs(list<x>) -> list<x>
+    Get_All_Pairs(tuple<x>) -> list<[x,x]>
+    """
+    collection = set(collection)
+    collection = sorted(collection)
+    length = len(collection)
+    #
+    result = []
+    for i in range(length):
+        for j in range(i+1, length):
+            e1 = collection[i]
+            e2 = collection[j]
+            result.append([e1, e2])
+    #
+    return result
+
 
